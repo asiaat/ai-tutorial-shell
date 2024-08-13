@@ -6,10 +6,13 @@ import { CreateFood } from "@/components/foods/CreateFood";
 import { SearchFood } from "@/components/foods/SearchFood";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useActions, useUIState } from "ai/rsc";
 import { type FormEvent, useState } from "react";
 
 export default function Home() {
   const [prompt, setPrompt] = useState("");
+  const [ conversation, setConversation] = useUIState<typeof AI>();
+  const { continueConversation } = useActions<typeof AI>();
 
   const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
